@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "file": "index.js",
+  "sourceRoot": "../src/",
+  "sources": [
+    "index.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;EAAA;AAAA,MAAA,aAAA,EAAA;;EAEA,aAAA,GAAgB,QAAA,CAAC,GAAD,EAAM,OAAN,CAAA;AACd;aACE,CAAC,IAAI,QAAJ,CAAa,CAAA,mBAAA,CAAA,CAAsB,GAAtB,CAA0B,CAA1B,CAAb,CAAD,CACA,CAAC,IADD,CACM,OADN,EADF;KAAA;EADc;;EAKhB,YAAA,GAAe,QAAA,CAAC,QAAD,EAAW,IAAX,CAAA;WACb,QAAQ,CAAC,OAAT,CAAiB,gBAAjB,EAAmC,QAAA,CAAC,GAAD,EAAM,UAAN,CAAA;aACjC,aAAA,CAAc,UAAd,EAA0B,IAA1B,CAAA,IAAmC;IADF,CAAnC;EADa;;EAIf,MAAM,CAAC,OAAP,GACE;IAAA,IAAA,EAAM;EAAN;AAZF",
+  "sourcesContent": [
+    "'use strict'\r\n\r\nevalInContext = (str, context) ->\r\n  try\r\n    (new Function(\"with(this) {return #{str}}\"))\r\n    .call context\r\n\r\nfillTemplate = (template, data) ->\r\n  template.replace /\\{\\{(.+?)\\}\\}/g, (all, expression) ->\r\n    evalInContext(expression, data) or ''\r\n\r\nmodule.exports =\r\n  fill: fillTemplate"
+  ]
+}
